@@ -1,0 +1,98 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam classFontSize 12
+skinparam classFontName Arial
+
+' ===================== CLASSES DO CARDÁPIO =====================
+
+abstract class Item {
+  - String nome
+  - double preco
+  - String tipo
+  + String getNome()
+  + double getPreco()
+  + String getTipo()
+}
+
+class Bebida extends Item
+class Lanche extends Item
+class Sobremesa extends Item
+
+' ===================== CLASSE CLIENTE =====================
+
+class Cliente {
+  - String nome
+  + String getNome()
+  + void setNome(String nome)
+}
+
+' ===================== ITEM PEDIDO =====================
+
+class ItemPedido {
+  - Item item
+  - int quantidade
+  + Item getItem()
+  + int getQuantidade()
+}
+
+ItemPedido --> Item
+
+' ===================== PEDIDO =====================
+
+class Pedido {
+  - int ID
+  - List<ItemPedido> itens
+  - Cliente cliente
+  - Status status
+  - int horaPedido  
+  + LocalDateTime getHoraPedido()
+  + void setHoraPedido(LocalDateTime horaPedido)
+  + int getID()
+  + void setID(int ID)
+  + List<ItemPedido> getItens()
+  + void setItens(List<ItemPedido> itens)
+  + Status getStatus()
+  + void setStatus(Status status)
+  + Cliente getCliente()
+  + void setCliente(Cliente cliente)
+  + double calcularPedido()
+  + void adicionarItem(ItemPedido item)
+}
+
+Pedido --> Cliente
+Pedido --> ItemPedido
+Pedido --> Status
+
+enum Status {
+  EM_PREPARO
+  PRONTO
+  ENTREGUE
+}
+
+' ===================== ESTABELECIMENTO =====================
+
+class Estabelecimento {
+  - String nome
+  - List<item> cardapio
+  - List<Pedido> pedidos
+  - int numero_de_pedidos
+
+    + String getNome()
+    + void setNome(String nome)
+    + List<Item> getCardapio()
+    + void setCardapio(List<Item> cardapio)
+    + List<Pedido> getPedidos()
+    + void setPedidos(List<Pedido> pedidos)
+    + void adicionarItensCardapioNaTabela(JTable tabela)
+    + void adicionarItensPedidoNaTabela(Cliente cliente, List<ItemPedido> itens)
+}
+
+Estabelecimento --> Pedido
+
+
+
+' ===================== INTERFACE GRÁFICA =====================
+
+
+
+@enduml
