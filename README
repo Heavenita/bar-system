@@ -1,1 +1,11 @@
-Para o codigo funcionar, basta rodar o arquivo Restaurante.java
+English:
+Software developed to register orders in a commercial establishment. 
+It was built in Java using Java Swing features, object-oriented programming, and in-memory data storage.
+
+To run the program, simply start the Restaurante.java file.
+
+PT-BR:
+Software desenvolvido para realizar o cadastro de pedidos em um estabelecimento comercial. 
+Foi criado em Java, utilizando os recursos do Java Swing, programação orientada a objetos e armazenamento de dados em memória.
+
+Para executar o programa, basta iniciar o arquivo Restaurante.java.
